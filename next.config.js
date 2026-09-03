@@ -1,4 +1,4 @@
-/** Next.js basic config placeholder */
+// Next.js basic config placeholder
 const nextConfig = {
   reactStrictMode: true,
 }

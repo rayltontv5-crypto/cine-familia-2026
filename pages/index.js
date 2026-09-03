@@ -1,16 +1,5 @@
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
-
-function VideoPlayer({ src }) {
-  if (!src) return null
-  return (
-    <div>
-      <video key={src} controls width="720">
-        <source src={src} type="video/mp4" />
-        Seu navegador não suporta o elemento de vídeo.
-      </video>
-    </div>
-  )
-}
 
 export default function Home() {
   const [videos, setVideos] = useState([])
@@ -24,7 +13,13 @@ export default function Home() {
 
   return (
     <main style={{ padding: 20, fontFamily: 'Arial, sans-serif' }}>
-      <h1>cine-familia-2026</h1>
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>cine-familia-2026</h1>
+        <nav>
+          <Link href="/login"><a style={{ marginRight: 12 }}>Admin</a></Link>
+        </nav>
+      </header>
+
       <p>Aplicativo de streaming — versão inicial (exemplo Web)</p>
 
       <section style={{ display: 'flex', gap: 20 }}>
@@ -35,6 +30,8 @@ export default function Home() {
             {videos.map((v) => (
               <li key={v.id} style={{ marginBottom: 8 }}>
                 <button onClick={() => setCurrent(v.url)} style={{ cursor: 'pointer' }}>{v.title}</button>
+                {' '}
+                <a href={v.url} download style={{ marginLeft: 8 }}>[Download]</a>
               </li>
             ))}
           </ul>
@@ -43,7 +40,12 @@ export default function Home() {
         <div style={{ flex: 2 }}>
           <h2>Player</h2>
           {current ? (
-            <VideoPlayer src={current} />
+            <div>
+              <video key={current} controls width="720">
+                <source src={current} type="video/mp4" />
+                Seu navegador não suporta o elemento de vídeo.
+              </video>
+            </div>
           ) : (
             <p>Escolha um vídeo do catálogo</p>
           )}

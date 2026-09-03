@@ -1,20 +1,45 @@
 # cine-familia-2026
 Aplicativo de Streaming Multiplataforma
 
-Este repositório agora contém um scaffold inicial de uma Web App baseada em Next.js. É um ponto de partida para um aplicativo de streaming; inclui uma interface simples para listar e reproduzir vídeos (com fontes de exemplo). Siga as instruções abaixo para rodar localmente.
+Este repositório contém um scaffold de uma Web App baseada em Next.js que permite listar, reproduzir e fazer upload local de vídeos (MVP). Projetado para rodar localmente — uploads são salvos em public/uploads.
 
 ## Como rodar (desenvolvimento)
 1. Instale Node.js 18+.
-2. No diretório do projeto rode:
+2. Clone o repositório e entre na pasta:
+
+```bash
+git clone https://github.com/rayltontv5-crypto/cine-familia-2026.git
+cd cine-familia-2026
+```
+
+3. Instale dependências e rode em modo dev:
 
 ```bash
 npm install
 npm run dev
 ```
 
-3. Abra http://localhost:3000
+4. Abra http://localhost:3000
 
-## Próximos passos sugeridos
-- Decidir onde hospedar e armazenar vídeos (S3/Cloud Storage) e integrar CDN.
-- Implementar autenticação e assinaturas (ex.: NextAuth + Stripe).
-- Adicionar transcodificação e suporte a múltiplos rendimentos (HLS/DASH) e player (video.js, hls.js).
+## Conta administrativa
+- Página de login: http://localhost:3000/login
+- Senha padrão: `admin123` (use `.env.local` para alterar)
+
+Crie `.env.local` com:
+
+```
+ADMIN_PASSWORD=suasenhaaqui
+```
+
+## Uploads e vídeos
+- Vídeos enviados via painel admin são salvos em `public/uploads` e ficam disponíveis na lista de catálogo.
+- Para produção, substitua o armazenamento local por S3/Cloud Storage e adicione transcodificação/HLS.
+
+## Download do código
+Você pode baixar o código pronto (branch main) como ZIP:
+
+https://github.com/rayltontv5-crypto/cine-familia-2026/archive/refs/heads/main.zip
+
+---
+
+Próximos passos recomendados: adicionar autenticação com NextAuth, integração com Stripe para assinaturas, configuração de armazenamento em S3 e pipeline de transcodificação (FFmpeg/HLS).

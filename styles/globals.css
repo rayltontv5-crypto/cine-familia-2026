@@ -18,3 +18,8 @@ button {
 button:hover {
   opacity: 0.9;
 }
+
+input[type="file"] {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
